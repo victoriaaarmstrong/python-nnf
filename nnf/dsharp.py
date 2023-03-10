@@ -74,6 +74,7 @@ def compile(
         sentence: And[Or[Var]],
         executable: str = 'dsharp',
         smooth: bool = False,
+        return_log: bool = False,
         timeout: t.Optional[int] = None,
         extra_args: t.Sequence[str] = ()
 ) -> NNF:
@@ -151,4 +152,7 @@ def compile(
     result = loads(out, var_labels=var_labels)
     result.mark_deterministic()
     NNF.decomposable.set(result, True)
-    return result
+    if return_log == True:
+        return result, log
+    else:
+        return result

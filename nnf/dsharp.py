@@ -148,11 +148,12 @@ def compile(
 
     if not out:
         raise RuntimeError("Couldn't read file output. Log:\n\n{}".format(log))
+    
+    if return_log == True:
+        return RuntimeError("Here's the log. Log:\n\n{}".format(log))
 
     result = loads(out, var_labels=var_labels)
     result.mark_deterministic()
     NNF.decomposable.set(result, True)
-    if return_log == True:
-        return result, log
-    else:
-        return result
+   
+    return result

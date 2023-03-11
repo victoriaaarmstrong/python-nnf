@@ -74,7 +74,7 @@ def compile(
         sentence: And[Or[Var]],
         executable: str = 'dsharp',
         smooth: bool = False,
-        return_log: bool = False,
+        return_log: t.Optional[bool] = False,
         timeout: t.Optional[int] = None,
         extra_args: t.Sequence[str] = ()
 ) -> NNF:
